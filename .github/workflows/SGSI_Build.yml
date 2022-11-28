@@ -1,5 +1,6 @@
 name: SGSI_Build
 
+
 on:
   watch:
     types: [started]
@@ -70,10 +71,12 @@ jobs:
               mv "${{ steps.config.outputs.repack_name }}" "upload/${{ steps.config.outputs.repack_name }}"
           fi
           ls "upload"
+      - name: Upload WebDAV
+        uses: bxb100/action-upload-webdav@v0.0.4
+        with:
+            webdav_address: https://lzy.helanxueyi.tk/dav
+            webdav_username: admin
+            webdav_password: lzy520
+            webdav_upload_path: "/github_upload"
+            files: "$GITHUB_WORKSPACE/SGSI-build-tool/SGSI/${{ steps.config.outputs.repack_name }}"
 
-          
-      - name: Upload GSI to WeTransfer
-        run: |
-              cd $GITHUB_WORKSPACE/SGSI-build-tool/
-              curl -sL https://git.io/file-transfer | sh
-              ./transfer wet ${{ steps.config.outputs.repack_name }}

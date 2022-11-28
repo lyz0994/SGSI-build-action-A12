@@ -63,6 +63,7 @@ jobs:
         run: |
           cd $GITHUB_WORKSPACE/SGSI-build-tool
           zip -r ${{ steps.config.outputs.repack_name }} ./SGSI/
+          ls
       - name: Upload WebDAV
         uses: bxb100/action-upload-webdav@v0.0.4
         with:
@@ -70,5 +71,5 @@ jobs:
             webdav_username: admin
             webdav_password: lzy520
             webdav_upload_path: "/github_upload"
-            files: "$GITHUB_WORKSPACE/SGSI-build-tool/${{ steps.config.outputs.repack_name }}"
+            files: "/home/runner/work/SGSI-build-action/SGSI-build-action/SGSI-build-tool/${{ steps.config.outputs.repack_name }}"
 

@@ -67,7 +67,7 @@ jobs:
       - name: Upload WebDAV
         uses: bxb100/action-upload-webdav@v0.0.4
         with:
-            webdav_address: http://3.16.255.161:5244/dav
+            webdav_address: http://lzy.helanxueyi.tk/dav
             webdav_username: admin
             webdav_password: lzy520
             webdav_upload_path: "/github_upload"

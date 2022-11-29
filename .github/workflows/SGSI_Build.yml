@@ -65,13 +65,12 @@ jobs:
           zip -r ${{ steps.config.outputs.repack_name }} ./SGSI/
           ls
           
-      - name: Upload WebDAV
-        uses: bxb100/action-upload-webdav@v0.0.4
+      - name: Upload FTP
+        uses: dennisameling/ftp-upload-action@v1
         with:
-            
-            webdav_address: http://lzy.helanxueyi.tk/dav
-            webdav_username: admin
-            webdav_password: lzy520
-            webdav_upload_path: "/github_upload"
-            files: "/home/runner/work/SGSI-build-action/SGSI-build-action/SGSI-build-tool/${{ steps.config.outputs.repack_name }}"
-
+          server: 3.16.255.161
+          username: 114514
+          password: Li123456
+          secure: false
+          local_dir: /home/runner/work/SGSI-build-action/SGSI-build-action/SGSI-build-tool/${{ steps.config.outputs.repack_name }}
+          server_dir: ./

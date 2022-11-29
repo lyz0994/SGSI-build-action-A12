@@ -64,9 +64,11 @@ jobs:
           cd $GITHUB_WORKSPACE/SGSI-build-tool
           zip -r ${{ steps.config.outputs.repack_name }} ./SGSI/
           ls
+          
       - name: Upload WebDAV
         uses: bxb100/action-upload-webdav@v0.0.4
         with:
+            runs-on: self-hosted
             webdav_address: http://lzy.helanxueyi.tk/dav
             webdav_username: admin
             webdav_password: lzy520

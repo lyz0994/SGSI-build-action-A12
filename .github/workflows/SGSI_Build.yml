@@ -53,7 +53,9 @@ jobs:
       - name: Repack Output File
         run: |
           cd $GITHUB_WORKSPACE/SGSI-build-tool
-          mv SGSI ${{ steps.config.outputs.repack_name }}
+          mkdir -p upload
+          zip -r ${{ steps.config.outputs.repack_name }} ./SGSI/*
+          mv "${{ steps.config.outputs.repack_name }}" "upload/${{ steps.config.outputs.repack_name }}"
           ls
           
       - name: Upload FTP
@@ -63,5 +65,5 @@ jobs:
           username: 114514
           password: Li123456
           secure: false
-          local_dir: /home/runner/work/SGSI-build-action/SGSI-build-action/SGSI-build-tool/${{ steps.config.outputs.repack_name }}
+          local_dir: /home/runner/work/SGSI-build-action/SGSI-build-action/SGSI-build-tool/upload
           server_dir: ./
